@@ -3,6 +3,7 @@ name: git.commit
 description: Conventional Commits 형식으로 적절한 파일만 스테이징하고 목적이 명확한 커밋을 생성합니다. 사용자가 커밋을 요청하거나 하나의 논리적 작업 단위가 끝났을 때 사용.
 argument-hint: "[선택: 범위 힌트 또는 메시지 지정]"
 model: sonnet
+context: fork
 ---
 
 # 커밋: $ARGUMENTS

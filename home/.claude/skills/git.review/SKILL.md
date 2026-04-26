@@ -3,9 +3,10 @@ name: git.review
 description: 워킹 트리 diff를 커밋·푸시·PR 전에 자기 점검합니다. 잔여 디버그·비밀값·범위 이탈·누락 테스트 + 프로젝트 CLAUDE.md/CONTRIBUTING.md의 아키텍처·코딩 규칙 위반을 잡습니다.
 argument-hint: "[선택: 리뷰 범위를 좁힐 파일/경로]"
 model: sonnet
+context: fork
 ---
 
-# 로컬 리뷰: $ARGUMENTS
+# 리뷰: $ARGUMENTS
 
 ## 워크플로우
 
@@ -21,13 +22,13 @@ model: sonnet
 
 - 발견만 하고 자동으로 고치지 않는다 — 무엇을 반영할지는 사용자가 결정합니다. review 스킬의 정체성.
 - 변경이 없으면 그대로 보고하고 이슈를 지어내지 않는다 — 거짓 양성은 신뢰를 떨어뜨려 다음 리뷰가 무시됩니다.
-- `CLAUDE.md` / `CONTRIBUTING.md` 명시 규칙 위반은 항상 **HIGH**로 표기한다 — 팀이 합의한 규칙은 개인 취향보다 우선합니다.
+- `CLAUDE.md` / `CONTRIBUTING.md` 명시 규칙 위반은 항상 **🚨 Critical**로 표기한다 — 팀이 합의한 규칙은 개인 취향보다 우선합니다.
 - diff만 보지 않고 변경된 파일 전체를 읽는다 — diff는 주변 import·의존 방향·라이프사이클 컨텍스트를 보여주지 못합니다.
 
 ## 기본 규칙
 
 - submodule pointer 변경이 들어 있으면 별도로 표시한다 — 일반 코드 변경과 섞이면 머지 후 빌드가 깨질 수 있습니다.
-- 심각도는 HIGH/MED/LOW 셋만 사용한다 — 더 잘게 쪼개면 사용자가 우선순위를 잡기 어렵습니다.
+- 심각도는 **🚨 Critical / ⚠️ Major / 💡 Minor** 셋만 사용한다 — 더 잘게 쪼개면 사용자가 우선순위를 잡기 어렵습니다. 이모지는 PR/터미널에서 시각 신호로 작동.
 
 ## 체크리스트
 
@@ -79,7 +80,9 @@ model: sonnet
 ### 판정: [PASS / PASS WITH FLAGS / FAIL]
 
 ### 이슈
-- **[HIGH/MED/LOW]** <파일>:<줄> — <무엇이 잘못됐고 왜 중요한지>
+- 🚨 **Critical** <파일>:<줄> — <무엇이 잘못됐고 왜 중요한지>
+- ⚠️ **Major** <파일>:<줄> — <…>
+- 💡 **Minor** <파일>:<줄> — <…>
 
 ### 통과
 - 깔끔하게 통과한 체크 요약

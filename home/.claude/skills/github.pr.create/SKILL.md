@@ -1,11 +1,12 @@
 ---
-name: github.pull-request
+name: github.pr.create
 description: 작업 브랜치(feature/bugfix/refactor/hotfix)에 대해 통합 브랜치(stage)를 베이스로 하는 GitHub PR을 생성합니다. 브랜치 이름의 티켓 번호를 PR 제목·본문에 연결하고, push와 `gh pr create`까지 한 번에 처리합니다.
 argument-hint: "[선택: base 브랜치 또는 PR 제목 힌트]"
 model: sonnet
+context: fork
 ---
 
-# Pull Request: $ARGUMENTS
+# PR: $ARGUMENTS
 
 기본 PR 흐름:
 - **베이스 브랜치 = `stage`** (master/main은 release/hotfix 머지에서만 사용)

@@ -3,9 +3,10 @@ name: git.branch
 description: 이슈 티켓을 기준으로 일관된 이름의 새 git 브랜치를 통합 브랜치(stage)에서 생성합니다. 새 작업을 시작할 때 사용 — 티켓 번호와 종류(task/bug/refactor/hotfix)를 받아 컨벤션에 맞는 슬러그를 만들고 stage 최신본에서 분기합니다.
 argument-hint: "[<TICKET>] [task|bug|refactor|hotfix] [작업 요약]"
 model: sonnet
+context: fork
 ---
 
-# 브랜치 생성: $ARGUMENTS
+# 브랜치: $ARGUMENTS
 
 이슈 트래커에서 발행된 티켓을 기준으로 브랜치를 따는 워크플로우입니다. 베이스 브랜치는 항상 **`stage`** 입니다 (`master`/`main`은 프로덕션이라 분기 대상 아님).
 
