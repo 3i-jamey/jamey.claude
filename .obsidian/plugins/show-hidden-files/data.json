@@ -1,0 +1,14 @@
+{
+  "errorNoticeTimeout": 0,
+  "language": "",
+  "noticeTimeout": 5,
+  "openChangelogOnUpdate": true,
+  "showConfigurationFolder": false,
+  "showHiddenFiles": true,
+  "showingRules": [
+    "+/home/.claude",
+    "-/\\.git(?:\\/|$)/u",
+    "-/\\.venv(?:\\/|$)/u",
+    "-/\\.DS_Store$/u"
+  ]
+}
