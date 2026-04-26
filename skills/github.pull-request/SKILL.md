@@ -25,11 +25,12 @@ model: sonnet
    - `refactor/...`, `hotfix/...` → 티켓 없을 수도 있음, 있으면 본문에 명시
 4. 브랜치의 **모든** 커밋을 분석합니다. 최신 커밋만 보지 않습니다 — 요약은 전체 범위를 다뤄야 합니다.
 5. PR 초안 작성:
-   - **제목** 70자 이내, 명령형, 마침표 없음. 형식 예:
-     - `feat(gps): implement GPS tracking core (<TICKET>)`
-     - `fix(tracking): remove dog from tracking mode bottom sheet (<TICKET>)`
-     - `bugfix: pixel 10 crash from GPU accelerator (<TICKET>)`
-     - 티켓이 없으면 conventional commit 형식만 사용 (`refactor(domain): split lesson logger interface`)
+   - **제목** 70자 이내, 명령형, 첫 글자 대문자, 마침표 없음. 스코프(`(scope)`)는 사용하지 않습니다. 티켓이 있으면 **`[<TICKET>]` 대괄호 prefix**로 시작.
+     형식 예:
+     - `[<TICKET>] feat: Add GPS tracking core`
+     - `[<TICKET>] fix: Remove dog from tracking mode bottom sheet`
+     - `[<TICKET>] fix: Pixel 10 crash from GPU accelerator`
+     - 티켓이 없으면 prefix 없이 conventional commit 형식만 사용: `refactor: Split lesson logger interface`
    - **본문** 구조 (HEREDOC 본문 그대로 사용):
      ```
      ## Summary
