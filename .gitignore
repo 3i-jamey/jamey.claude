@@ -1,2 +1,9 @@
-.obsidian/
-.claude/
+# Claude Code local state
+/.claude/
+
+# Obsidian per-machine state (layout, mobile workspace)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# macOS noise (everywhere)
+.DS_Store
