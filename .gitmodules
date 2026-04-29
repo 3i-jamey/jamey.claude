@@ -1,6 +1,12 @@
 [submodule "lab/practices/gstack/en"]
 	path = lab/practices/gstack/en
 	url = https://github.com/3i-jamey/gstack
+[submodule "lab/practices/gstack/ko"]
+	path = lab/practices/gstack/ko
+	url = https://github.com/3i-jamey/gstack.ko
 [submodule "lab/practices/superpowers/en"]
 	path = lab/practices/superpowers/en
 	url = https://github.com/3i-jamey/superpowers-claude
+[submodule "lab/practices/superpowers/ko"]
+	path = lab/practices/superpowers/ko
+	url = https://github.com/3i-jamey/superpowers-claude.ko
