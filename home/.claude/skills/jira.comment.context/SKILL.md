@@ -4,6 +4,7 @@ description: 현재 대화 컨텍스트의 분석·작업 결과를 요약해 Ji
 argument-hint: 'PVPLUS-0000 또는 https://...atlassian.net/browse/PVPLUS-0000'
 model: sonnet
 context: inherit
+tools: mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__addCommentToJiraIssue
 ---
 
 # Jira Comment: $ARGUMENTS
@@ -29,32 +30,46 @@ context: inherit
    - URL 형식(`https://...atlassian.net/browse/PVPLUS-1234`) → 마지막 경로 세그먼트 추출
    - ID 형식(`PVPLUS-1234`) → 그대로 사용
    - 파싱 실패 시 작업을 중단하고 올바른 형식을 안내한다.
-2. **이슈 확인**: `mcp__claude_ai_Atlassian_Rovo__getJiraIssue`로 이슈를 조회해 `cloudId`를 확보한다.
+2. **이슈 확인**: `mcp__claude_ai_Atlassian__getJiraIssue`로 이슈를 조회해 `cloudId`를 확보한다.
 3. **컨텍스트 요약**: 현재 대화에서 핵심 내용을 뽑아 영어·한글 각각 두 가지를 작성한다.
    - **제목 한 줄**: 분석/작업의 핵심을 60자 이내. 영어 블록은 `🇺🇸 ` 접두, 한글 블록은 `🇰🇷 ` 접두를 붙인다.
    - **한 줄 요약**: 결론을 80자 이내 한 줄로.
    - **상세(접힘 안)**: 근본 원인 / 핵심 발견사항 / 수정 방법 또는 결론. bullet 5~10개 이내, 필요하면 단락·코드블록 사용.
-4. **댓글 등록**: `mcp__claude_ai_Atlassian_Rovo__addCommentToJiraIssue` 호출.
-   - `contentFormat: "adf"` 필수.
-   - `cloudId`는 `getJiraIssue` 응답에서 가져온 값 사용.
-5. **완료 보고**: 등록된 댓글 URL을 사용자에게 출력한다.
+4. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 종료.
 
 ## 반드시 지킬 규칙
 
-- 상세 본문은 반드시 `expand`로 접어 둔다 — 댓글이 길어져 이슈 화면을 잡아먹지 않게 한다.
-- `expand.attrs.title`에는 국기 이모지를 넣지 않는다 — 이모지는 상단 heading에만. 펼친 화면이 깔끔해야 한다.
-- `contentFormat: "adf"`를 사용한다 — markdown 포맷에는 `expand` 노드가 없다.
-- 두 블록은 항상 영어 → 한글 순서로 배치한다 — 글로벌 가독성 우선.
-- `cloudId`는 `getJiraIssue` 응답에서 가져온다 — 하드코딩 금지.
+- 상세 본문은 `expand`로 접어 둔다.
+- `expand.attrs.title`에는 국기 이모지를 넣지 않는다. 이모지는 상단 heading에만.
+- `contentFormat: "adf"`를 사용한다.
+- 두 블록은 영어 → 한글 순서로 배치한다.
+- `cloudId`는 `getJiraIssue` 응답에서 가져온다. 하드코딩 금지.
 - 이슈 ID를 추출하지 못하면 댓글을 달지 않고 사용자에게 알린다.
 - 대화 컨텍스트에 요약할 내용이 없으면 댓글을 달지 않고 이유를 알린다.
 
 ## 기본 규칙
 
-- 댓글은 한 번에 하나만 등록한다 — 영어 블록 + 한글 블록을 단일 댓글에 묶는다.
-- 요약은 간결하게 — 대화 본문을 그대로 옮기지 않고 핵심만 추출한다.
+- 댓글은 한 번에 하나만 등록한다. 영어 블록 + 한글 블록을 단일 댓글에 묶는다.
+- 요약은 간결하게. 대화 본문을 그대로 옮기지 않고 핵심만 추출한다.
 - 코드 스니펫이 필요하면 ADF `codeBlock` 노드를 사용한다.
-- 같은 댓글을 두 번 등록하지 않는다 — 실패 시 원인을 보고하고 재시도 여부를 사용자에게 묻는다.
+- 같은 댓글을 두 번 등록하지 않는다. 실패 시 원인을 보고하고 재시도 여부를 묻는다.
+
+## 마무리 규칙
+
+- 검증: 이슈 ID 추출 실패 / 대화 컨텍스트에 요약할 내용 없음 → `BLOCKED: <INVALID_ISSUE|EMPTY_CONTEXT>`와 한 줄 사유로 종료.
+- 보고: MCP getJiraIssue raw 응답·중간 추론은 헤딩 위쪽에 두거나 출력 안 함.
+
+## 리턴 형식
+
+```
+이슈: <PVPLUS-1234>
+🇺🇸 <English title> | <English one-line summary>
+🇰🇷 <한글 제목> | <한글 한 줄 요약>
+
+진행하려면 (ㅇ/y), 중단하려면 (ㄴ/n)을 적어주세요.
+```
+
+진행 응답을 받으면 ADF 골격(영어 heading + 요약 + expand[bullet 5~10] → 한글 heading + 요약 + expand)을 조립해 `mcp__claude_ai_Atlassian__addCommentToJiraIssue`(contentFormat: "adf", cloudId는 getJiraIssue 응답에서) 호출. 등록된 댓글 URL 보고.
 
 ## 출력 포맷 (ADF 골격)
 
