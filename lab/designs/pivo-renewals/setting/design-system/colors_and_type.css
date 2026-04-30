@@ -1,0 +1,229 @@
+/* =============================================================
+   Pivo Design System — Colors & Type
+   Source: Pivo App Design System (Draft) Figma + Pivo Plus MVP
+   Brand fonts: Caros Soft (primary), Poppins (secondary), Roboto Mono (mono)
+   ============================================================= */
+
+/* ---------- Fonts ---------- */
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftThin.woff") format("woff");        font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftExtraLight.woff") format("woff");  font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftLight.woff") format("woff");       font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoft.woff") format("woff");            font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftMedium.woff") format("woff");      font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftBold.woff") format("woff");        font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftExtraBold.woff") format("woff");   font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftHeavy.woff") format("woff");       font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caros Soft"; src: url("./fonts/CarosSoftBlack.woff") format("woff");       font-weight: 950; font-style: normal; font-display: swap; }
+
+@font-face { font-family: "Poppins"; src: url("./fonts/poppins-light.woff2") format("woff2");    font-weight: 300; }
+@font-face { font-family: "Poppins"; src: url("./fonts/poppins-regular.woff2") format("woff2");  font-weight: 400; }
+@font-face { font-family: "Poppins"; src: url("./fonts/poppins-medium.woff2") format("woff2");   font-weight: 500; }
+@font-face { font-family: "Poppins"; src: url("./fonts/poppins-semibold.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "Poppins"; src: url("./fonts/poppins-bold.woff2") format("woff2");     font-weight: 700; }
+
+/* Sofia Pro Soft was used for the cover only; we substitute Caros Soft Bold (visually similar geometric soft sans). Permanent Marker / Patrick Hand are decorative accents — fall back to Google Fonts at use-site. */
+
+:root {
+  /* ============= BRAND COLOR PALETTE =============
+     Three brands share the system:
+     - PIVO (red)  — corporate / Pivo (default)
+     - PLUS (blue) — Pivo Plus product
+     - PURPLE       — accent / gradients
+  */
+
+  /* PIVO red — used for cover headers, primary CTAs in app design system */
+  --pivo-red:           rgb(236, 37, 68);
+  --pivo-red-50:        rgb(254, 235, 239);
+  --pivo-red-100:       rgb(252, 207, 215);
+  --pivo-red-300:       rgb(244, 113, 134);
+  --pivo-red-500:       rgb(236, 37, 68);   /* base */
+  --pivo-red-700:       rgb(186, 24, 50);
+  --pivo-red-900:       rgb(120, 16, 32);
+
+  /* PLUS blue — primary across MVP / Plus product */
+  --plus-blue:          rgb(23, 69, 232);   /* the dominant brand blue (8382× usage) */
+  --plus-blue-bright:   rgb(56, 130, 235);  /* lighter accent / button */
+  --plus-blue-soft:     rgb(95, 155, 239);
+  --plus-blue-pale:     rgb(124, 163, 238);
+  --plus-blue-50:       rgb(237, 241, 254);
+  --plus-blue-100:      rgb(214, 224, 252);
+  --plus-blue-system:   rgb(0, 122, 255);   /* iOS system blue */
+
+  /* PURPLE accents */
+  --purple-500:         rgb(135, 42, 255);
+  --purple-400:         rgb(133, 23, 249);
+  --purple-300:         rgb(183, 127, 255);
+
+  /* WARM accents */
+  --orange:             rgb(248, 103, 62);
+  --amber:              rgb(255, 172, 51);
+  --yellow:             rgb(255, 220, 93);
+  --salmon:             rgb(244, 99, 99);
+  --apricot:            rgb(251, 182, 86);
+
+  /* COOL accents */
+  --teal:               rgb(2, 228, 142);
+  --mint:               rgb(55, 203, 168);
+  --periwinkle:         rgb(113, 154, 242);
+
+  /* SEMANTIC */
+  --success:            rgb(2, 228, 142);
+  --warning:            rgb(255, 172, 51);
+  --danger:             rgb(255, 0, 0);
+  --info:               var(--plus-blue-bright);
+
+  /* ============= NEUTRAL SCALE =============
+     Purpose-built greyscale used in app surfaces.
+  */
+  --black:              rgb(0, 0, 0);
+  --ink-900:            rgb(41, 47, 51);     /* deep ink */
+  --ink-800:            rgb(49, 51, 64);     /* primary text */
+  --ink-600:            rgb(90, 91, 102);    /* secondary text */
+  --ink-500:            rgb(102, 117, 127);  /* tertiary */
+  --ink-400:            rgb(131, 132, 140);  /* placeholder / inactive nav */
+  --ink-300:            rgb(172, 173, 178);  /* disabled */
+  --line-200:           rgb(213, 214, 216);  /* borders */
+  --line-100:           rgb(218, 218, 218);
+  --line-50:            rgb(196, 196, 196);
+  --bg-200:             rgb(234, 234, 235);  /* chip / disabled bg */
+  --bg-100:             rgb(247, 247, 247);  /* page bg */
+  --bg-50:              rgb(246, 246, 246);
+  --white:              rgb(255, 255, 255);
+
+  /* ============= SEMANTIC ALIASES (use these in components) ============= */
+  --color-bg:           var(--white);
+  --color-bg-subtle:    var(--bg-100);
+  --color-bg-muted:     var(--bg-200);
+  --color-surface:      var(--white);
+  --color-surface-glass: rgba(255, 255, 255, 0.8);
+
+  --color-fg:           var(--ink-800);   /* primary text */
+  --color-fg-2:         var(--ink-600);   /* secondary text */
+  --color-fg-3:         var(--ink-400);   /* tertiary / placeholder */
+  --color-fg-disabled:  var(--ink-300);
+  --color-fg-inverse:   var(--white);
+
+  --color-border:       var(--line-200);
+  --color-border-soft:  var(--bg-200);
+
+  --color-brand:        var(--plus-blue);
+  --color-brand-bright: var(--plus-blue-bright);
+  --color-accent:       var(--pivo-red);
+  --color-record:       var(--danger);
+
+  /* Shadows — overwhelmingly use rgba(0,0,0,0.25) and rgba(0,0,0,0.4) */
+  --shadow-sm:   0 0 4px rgba(0, 0, 0, 0.10);
+  --shadow-md:   0 0 4px rgba(0, 0, 0, 0.25);
+  --shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-xl:   0 12px 32px rgba(0, 0, 0, 0.40);
+  --shadow-up:   0 -2px 4px rgba(0, 0, 0, 0.05); /* tab bar */
+  --shadow-glow: 0 0 0 4px rgba(23, 69, 232, 0.15);
+
+  /* ============= GRADIENTS =============
+     The system loves vivid 2-stop diagonals on illustration cards.
+  */
+  --grad-pivo-purple:  linear-gradient(180deg, rgb(236,37,68) 0%, rgb(135,42,255) 100%);
+  --grad-mint-blue:    linear-gradient(180deg, rgb(55,203,168) 0%, rgb(113,154,242) 100%);
+  --grad-blue-purple:  linear-gradient(180deg, rgb(124,163,238) 0%, rgb(135,42,255) 100%);
+  --grad-warm:         linear-gradient(180deg, rgb(251,182,86) 0%, rgb(244,99,99) 100%);
+  --grad-record:       linear-gradient(180deg, rgb(248,103,62) 0%, rgb(236,37,68) 100%);
+
+  /* Camera-view "protection" gradient for icon legibility on photo backgrounds */
+  --grad-protection-top:    linear-gradient(180deg, rgba(0,0,0,0.45), transparent);
+  --grad-protection-bottom: linear-gradient(0deg,   rgba(0,0,0,0.55), transparent);
+
+  /* ============= RADII ============= */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   10px;   /* cards (most-used) */
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-pill: 999px;  /* buttons, chips, badges */
+
+  /* ============= SPACING — 4-pt grid ============= */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;   /* default gutter */
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Standard mobile gutter (Pivo screens are 375px wide w/ 16px padding) */
+  --gutter:        16px;
+  --hit-target:    44px;   /* iOS minimum */
+  --bottom-nav:    76px;
+  --top-nav:       80px;
+  --status-bar:    20px;
+
+  /* ============= TYPE SCALE ============= */
+  --font-sans:    "Caros Soft", "Poppins", -apple-system, "SF Pro Text", system-ui, sans-serif;
+  --font-display: "Caros Soft", "Poppins", "Sofia Pro Soft", system-ui, sans-serif;
+  --font-mono:    "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-marker:  "Permanent Marker", "Patrick Hand", "Caros Soft", cursive;
+
+  --fw-light:     300;
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-bold:      700;
+  --fw-extrabold: 800;
+
+  /* Type scale (px). Caros Soft Bold/Medium dominate the Figma. */
+  --fs-10:  10px;  /* meta / chip / labels */
+  --fs-12:  12px;  /* small body / setting subtitle */
+  --fs-14:  14px;  /* body */
+  --fs-16:  16px;  /* default UI */
+  --fs-18:  18px;  /* nav title */
+  --fs-20:  20px;
+  --fs-24:  24px;  /* card title */
+  --fs-28:  28px;
+  --fs-32:  32px;
+  --fs-44:  44px;
+  --fs-50:  50px;  /* cover headline */
+  --fs-64:  64px;  /* hero */
+
+  --lh-tight:  1.0;   /* headline */
+  --lh-snug:   1.25;  /* display */
+  --lh-base:   1.5;   /* body */
+  --lh-loose:  1.8;   /* labels */
+
+  --tracking-tight: -0.3px; /* large titles in iOS heading style */
+  --tracking-wide:  0.888px;/* the WIP badge spec */
+}
+
+/* ---------- Defaults ---------- */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  line-height: var(--lh-base);
+  color: var(--color-fg);
+  background: var(--color-bg);
+}
+
+/* ---------- Semantic type classes ---------- */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-50);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+}
+.t-h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.2; }
+.t-h2 { font-family: var(--font-sans);    font-weight: 700; font-size: 24px; line-height: 1.33; letter-spacing: var(--tracking-tight); }
+.t-h3 { font-family: var(--font-sans);    font-weight: 700; font-size: 18px; line-height: 1.44; }
+.t-nav-title  { font-family: var(--font-sans); font-weight: 700; font-size: 18px; line-height: 36px; color: var(--color-fg); }
+.t-section    { font-family: var(--font-sans); font-weight: 700; font-size: 16px; line-height: 24px; color: var(--color-fg); }
+.t-body       { font-family: var(--font-sans); font-weight: 400; font-size: 14px; line-height: 1.5; }
+.t-body-md    { font-family: var(--font-sans); font-weight: 500; font-size: 14px; line-height: 1.5; }
+.t-meta       { font-family: var(--font-sans); font-weight: 400; font-size: 12px; line-height: 20px; color: var(--color-fg-2); }
+.t-label      { font-family: var(--font-sans); font-weight: 500; font-size: 10px; line-height: 18px; }
+.t-button     { font-family: var(--font-sans); font-weight: 700; font-size: 16px; line-height: 24px; }
+.t-eyebrow    { font-family: var(--font-sans); font-weight: 700; font-size: 20px; letter-spacing: 0.888px; text-transform: uppercase; }
+.t-mono       { font-family: var(--font-mono); font-weight: 500; font-size: 12px; }
+.t-marker     { font-family: var(--font-marker); font-weight: 400; font-size: 22px; }
