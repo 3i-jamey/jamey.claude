@@ -13,3 +13,6 @@
 [submodule "lab/practices/andrej-karpathy-skills/en"]
 	path = lab/practices/andrej-karpathy-skills/en
 	url = https://github.com/3i-jamey/andrej-karpathy-skills.en.git
+[submodule "lab/practices/andrej-karpathy-skills/ko"]
+	path = lab/practices/andrej-karpathy-skills/ko
+	url = https://github.com/3i-jamey/andrej-karpathy-skills.ko.git
