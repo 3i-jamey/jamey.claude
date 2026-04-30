@@ -71,6 +71,7 @@ tools: Bash, Read, mcp__claude_ai_Atlassian__getJiraIssue
 - pre-commit 훅을 우회하지 않는다 (`--no-verify`, `--no-gpg-sign`). 사용자 명시 요청 시에만 예외.
 - `--amend`로 실패한 훅을 덮지 않는다.
 - 이 스킬로 push 하지 않는다.
+- 영어로 작성한다.
 
 ## 기본 규칙
 

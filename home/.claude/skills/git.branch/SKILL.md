@@ -52,6 +52,7 @@ tools: Bash, Read, Grep, mcp__claude_ai_Atlassian__getJiraIssue
 - task/bug 작업에는 티켓 번호를 요구한다.
 - 같은 이름의 기존 브랜치는 강제 리셋하지 않는다. 슬러그 변형(`-v2`, 더 구체적 단어)이나 사용자 확인을 먼저 받는다.
 - 자동 push 하지 않는다.
+- 영어로 작성한다.
 
 ## 기본 규칙
 
