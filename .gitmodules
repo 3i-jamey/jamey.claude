@@ -10,3 +10,6 @@
 [submodule "lab/practices/superpowers/ko"]
 	path = lab/practices/superpowers/ko
 	url = https://github.com/3i-jamey/superpowers-claude.ko
+[submodule "lab/practices/andrej-karpathy-skills/en"]
+	path = lab/practices/andrej-karpathy-skills/en
+	url = https://github.com/3i-jamey/andrej-karpathy-skills.en.git
