@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jira Markdown Comment"
+  short_description: "Post bilingual Markdown to Jira"
+  default_prompt: "Use $jira-comment-md to post these Markdown reports to Jira."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Skill Template"
+  short_description: "Template for writing Codex SKILL.md files"
+  default_prompt: "Use $base-format to draft a Codex SKILL.md template."

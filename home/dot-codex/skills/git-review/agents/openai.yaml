@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Review"
+  short_description: "Review local git diffs before PRs"
+  default_prompt: "Use $git-review to review my local changes before I push."

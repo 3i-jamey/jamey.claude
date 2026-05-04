@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jira Context Comment"
+  short_description: "Post bilingual context to Jira"
+  default_prompt: "Use $jira-comment-context to summarize this work into a Jira comment."
