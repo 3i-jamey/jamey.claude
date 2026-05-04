@@ -1,10 +1,6 @@
 # Claude Code local state (repo-root only — the runtime cache for THIS repo)
 /.claude/
 
-# Re-include home/.claude/ source — overrides ~/.gitignore_global's `.claude/`
-# (this repo IS a Claude config dotfiles repo; home/.claude/ is the source of truth)
-!home/.claude/
-
 # Obsidian per-machine state (layout, mobile workspace)
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json

@@ -1,3 +1,5 @@
-# 링크할 경로 목록 (한 줄에 하나, ~/<경로> → home/<경로>)
-.claude/agents
-.claude/skills
+# 링크할 경로 목록 (한 줄에 하나, 형식: <SRC>:<DST> — home/<SRC> → ~/<DST>)
+dot-claude/agents:.claude/agents
+dot-claude/skills:.claude/skills
+dot-codex/agents:.codex/agents
+dot-codex/skills:.codex/skills
