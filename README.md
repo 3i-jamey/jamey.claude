@@ -6,17 +6,19 @@
 ## 구조
 
 ```
-home/.claude/
+home/dot-claude/                      # 배포 시 ~/.claude/ 로 심볼릭 링크
   skills/                          # 슬래시 커맨드(/skill-id)로 호출하는 스킬
-    base.format/                   # SKILL.md 템플릿
-    git.branch / git.commit / git.review
-    gitflow.release.start / gitflow.release.finish
-    github.pr.create / github.pr.comment.android
-    jira.comment.context / jira.comment.md
-    string.short.kebab
+    base-format/                   # SKILL.md 템플릿
+    git-branch / git-commit / git-review
+    gitflow-release-start / gitflow-release-finish
+    github-pr-create / github-pr-comment-android
+    jira-comment-context / jira-comment-md
+    string-short-kebabcase
+    task-01-grillme
   agents/                          # @agent-<name>으로 위임할 서브에이전트
     base/                          # AGENT.md 템플릿
     git/
+home/dot-codex/                    # 배포 시 ~/.codex/ 로 심볼릭 링크 (OpenAI Codex 자산)
 
 lab/                               # 저장소 안에서만 참고 (배포 안 됨)
   practices/                       # 외부 학습 레퍼런스
@@ -40,7 +42,8 @@ ln.sh                              # ln 항목을 home/ → $HOME 으로 연결
 ./ln.sh
 ```
 
-`ln`에 적힌 경로(현재 `.claude/agents`, `.claude/skills`)를 `home/<path>` → `$HOME/<path>`로 심볼릭 링크한다.
+`ln`에 적힌 항목(`<SRC>:<DST>` — `home/<SRC>` → `$HOME/<DST>`)을 심볼릭 링크한다.
+현재: `dot-claude/{agents,skills}` → `~/.claude/{agents,skills}`, `dot-codex/{agents,skills}` → `~/.codex/{agents,skills}`.
 이미 같은 타깃이면 `ok`, 다른 곳을 가리키거나 일반 파일이면 `skip`, 깨진 링크는 자동 복구한다.
 새 경로를 배포하려면 `ln`에 한 줄 추가 후 다시 실행.
 
@@ -48,17 +51,18 @@ ln.sh                              # ln 항목을 home/ → $HOME 으로 연결
 
 | 스킬 | 용도 |
 |---|---|
-| `base.format` | SKILL.md 작성 템플릿 (복사해서 새 스킬 시작) |
-| `git.branch` | 티켓 기반 브랜치 생성 (통합 브랜치에서 분기) |
-| `git.commit` | Conventional Commits 형식 커밋 작성 |
-| `git.review` | 커밋·푸시·PR 전 자기 점검 |
-| `gitflow.release.start` | release 브랜치 분기 + 버전 bump |
-| `gitflow.release.finish` | release 머지·태깅·푸시 |
-| `github.pr.create` | stage 베이스 PR 생성 |
-| `github.pr.comment.android` | Android 시니어 관점 PR 코드리뷰 |
-| `jira.comment.context` | 현재 대화를 양국어 Jira 댓글로 등록 |
-| `jira.comment.md` | 마크다운 파일 두 개를 양국어 Jira 댓글로 등록 |
-| `string.short.kebab` | 자유 문구 → 짧은 kebab-case 슬러그 |
+| `base-format` | SKILL.md 작성 템플릿 (복사해서 새 스킬 시작) |
+| `git-branch` | 티켓 기반 브랜치 생성 (통합 브랜치에서 분기) |
+| `git-commit` | Conventional Commits 형식 커밋 작성 |
+| `git-review` | 커밋·푸시·PR 전 자기 점검 |
+| `gitflow-release-start` | release 브랜치 분기 + 버전 bump |
+| `gitflow-release-finish` | release 머지·태깅·푸시 |
+| `github-pr-create` | stage 베이스 PR 생성 |
+| `github-pr-comment-android` | Android 시니어 관점 PR 코드리뷰 |
+| `jira-comment-context` | 현재 대화를 양국어 Jira 댓글로 등록 |
+| `jira-comment-md` | 마크다운 파일 두 개를 양국어 Jira 댓글로 등록 |
+| `string-short-kebabcase` | 자유 문구 → 짧은 kebab-case 슬러그 |
+| `task-01-grillme` | 계획·설계를 한 번에 한 질문씩 grill (의사결정 트리 인터뷰) |
 
 ## 에이전트
 
@@ -67,8 +71,8 @@ ln.sh                              # ln 항목을 home/ → $HOME 으로 연결
 
 ## 새 스킬·에이전트 만들기
 
-- 스킬: `home/.claude/skills/base.format/SKILL.md`를 복사해 `home/.claude/skills/<skill-id>/SKILL.md`로 저장.
-- 에이전트: `home/.claude/agents/base/AGENT.md`를 복사해 `home/.claude/agents/<agent-id>/AGENT.md`로 저장.
+- 스킬: `home/dot-claude/skills/base-format/SKILL.md`를 복사해 `home/dot-claude/skills/<skill-id>/SKILL.md`로 저장.
+- 에이전트: `home/dot-claude/agents/base/AGENT.md`를 복사해 `home/dot-claude/agents/<agent-id>/AGENT.md`로 저장.
 
 각 템플릿 상단 HTML 주석에 frontmatter 필드, 섹션 구조, 작성 컨벤션이 모두 들어 있다.
 새 파일을 만들 때는 가시 안내(💡 블록)와 모든 주석을 지우고 커밋.
