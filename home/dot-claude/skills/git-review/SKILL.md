@@ -1,5 +1,5 @@
 ---
-name: git.review
+name: git-review
 description: 워킹 트리 diff를 커밋·푸시·PR 전에 자기 점검합니다. 잔여 디버그·비밀값·범위 이탈·누락 테스트 + 프로젝트 CLAUDE.md/CONTRIBUTING.md의 아키텍처·코딩 규칙 위반을 잡습니다.
 argument-hint: "[선택: 리뷰 범위를 좁힐 파일/경로]"
 model: sonnet

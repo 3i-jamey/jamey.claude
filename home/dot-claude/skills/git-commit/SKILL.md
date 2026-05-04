@@ -1,5 +1,5 @@
 ---
-name: git.commit
+name: git-commit
 description: 스테이징된 변경만으로 Conventional Commits 형식의 커밋을 만든다. 사용자가 커밋을 요청하거나 한 논리적 작업 단위가 끝났을 때 사용. 스테이징은 사용자가 끝낸 상태여야 한다.
 argument-hint: "[선택: 범위 힌트 또는 메시지 지정]"
 model: sonnet

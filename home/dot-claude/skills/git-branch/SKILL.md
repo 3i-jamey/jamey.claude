@@ -1,5 +1,5 @@
 ---
-name: git.branch
+name: git-branch
 description: 이슈 티켓을 기준으로 일관된 이름의 새 git 브랜치를 통합 브랜치에서 생성합니다. 새 작업을 시작할 때 사용. 티켓 번호와 종류(task/bug/refactor/hotfix)를 받아 컨벤션에 맞는 슬러그를 만들고 통합 브랜치 최신본에서 분기합니다.
 argument-hint: "[<TICKET>] [task|bug|refactor|hotfix] [작업 요약]"
 model: haiku
@@ -31,7 +31,7 @@ tools: Bash, Read, Grep, mcp__claude_ai_Atlassian__getJiraIssue
    - `git branch -a --list "*<TICKET>*"` 로 과거/원격 브랜치 확인
    - 프로젝트의 docs/notes 디렉토리에서 `<TICKET>-*` 폴더 검색
    - 발견 시 해당 슬러그를 그대로 채택하고 prefix만 이슈 타입에 맞게 결정
-6. 슬러그가 없으면 `string.short.kebabcase` 스킬을 호출해 티켓 타이틀/요약에서 슬러그를 생성한다. 슬러그 규칙(3~4단어, 관사·전치사 제거, kebab-case 정규화 등)은 그 스킬에서 단일 출처로 관리하므로 여기서 다시 정의하지 않는다.
+6. 슬러그가 없으면 `string-short-kebabcase` 스킬을 호출해 티켓 타이틀/요약에서 슬러그를 생성한다. 슬러그 규칙(3~4단어, 관사·전치사 제거, kebab-case 정규화 등)은 그 스킬에서 단일 출처로 관리하므로 여기서 다시 정의하지 않는다.
 7. **이슈 트래커 자동 조회**: `mcp__claude_ai_Atlassian__getJiraIssue`로 티켓 정보(summary, issuetype)를 가져와 슬러그·prefix 결정에 활용한다. 실패하면 묻는다.
 8. 최종 브랜치 이름 조합:
    ```

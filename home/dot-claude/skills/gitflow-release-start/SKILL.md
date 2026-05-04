@@ -1,5 +1,5 @@
 ---
-name: gitflow.release.start
+name: gitflow-release-start
 description: git flow release 브랜치를 새로 만듭니다. stage에서 release/{VERSION}을 분기하고, 버전 파일을 갱신한 뒤 버전 bump 커밋을 만들고 리모트에 푸시합니다. 사용자가 새 릴리즈를 시작하거나 코드프리즈에 들어갈 때 사용.
 argument-hint: "[선택: 1.19.0 — 생략 시 다음 마이너 제안]"
 model: haiku

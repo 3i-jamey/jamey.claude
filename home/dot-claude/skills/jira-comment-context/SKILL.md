@@ -1,5 +1,5 @@
 ---
-name: jira.comment.context
+name: jira-comment-context
 description: 현재 대화 컨텍스트의 분석·작업 결과를 요약해 Jira 이슈에 양국어 제목 + 요약 + 접힘 본문 형태로 댓글을 등록한다. 분석/조사 결과를 영문·한글 둘 다 남기고 상세는 접어 두어야 할 때 사용.
 argument-hint: 'PVPLUS-0000 또는 https://...atlassian.net/browse/PVPLUS-0000'
 model: sonnet

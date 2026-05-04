@@ -41,7 +41,7 @@ tools: <스킬이 실제로 사용하는 도구만 콤마로. 예: Bash, Read, G
    같은 강제도 안에서 짝이 되는 규칙은 인접 배치.
 
  [frontmatter 필드]
-   - name: 슬래시 커맨드명과 일치. kebab-case + 점 허용 (e.g., git.commit)
+   - name: 슬래시 커맨드명과 일치. kebab-case (e.g., git-commit)
    - description: 호출 트리거의 핵심. 「무엇을, 언제, 왜」 한 문장.
                   너무 일반적이면 호출 안 되고, 너무 좁으면 충돌.
    - argument-hint: 입력 자리표시자. 인자 받지 않으면 생략 가능.

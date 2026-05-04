@@ -1,5 +1,5 @@
 ---
-name: string.short.kebab
+name: string-short-kebabcase
 description: 자유 문구(티켓 제목·이슈 요약 등)를 3~4단어 이내의 짧은 kebab-case 슬러그로 변환할 때 호출. git 브랜치명·폴더명·파일명 등 짧은 식별자를 만들어야 하는 상황에서 사용.
 argument-hint: <원본 문자열>
 model: haiku

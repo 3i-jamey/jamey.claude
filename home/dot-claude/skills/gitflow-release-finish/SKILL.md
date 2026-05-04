@@ -1,5 +1,5 @@
 ---
-name: gitflow.release.finish
+name: gitflow-release-finish
 description: git flow 릴리즈 브랜치를 마무리합니다. release/{VERSION}을 master와 stage에 머지하고 버전 태그를 만든 뒤 리모트로 푸시합니다. 사용자가 릴리즈를 닫거나 배포 직전 마무리를 요청할 때 사용.
 argument-hint: "[선택: 1.19.0 — 생략 시 현재 release 브랜치 자동 감지]"
 model: haiku

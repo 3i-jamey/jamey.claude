@@ -1,5 +1,5 @@
 ---
-name: jira.comment.md
+name: jira-comment-md
 description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈에 양국어 제목 + 요약 + 접힘 본문으로 댓글을 등록한다. 분량이 긴 분석 리포트를 영문/한글로 함께 첨부하되 본문은 접어 두어야 할 때 사용.
 argument-hint: <TICKET-or-URL> <md-file-1> <md-file-2>
 model: sonnet
