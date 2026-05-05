@@ -1,4 +1,0 @@
-interface:
-  display_name: "Gitflow Release Start"
-  short_description: "Start git-flow release branches"
-  default_prompt: "Use $gitflow-release-start to start a release branch."

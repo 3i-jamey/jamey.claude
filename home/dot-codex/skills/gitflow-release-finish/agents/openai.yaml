@@ -1,4 +1,0 @@
-interface:
-  display_name: "Gitflow Release Finish"
-  short_description: "Finish and tag git-flow releases"
-  default_prompt: "Use $gitflow-release-finish to finish this release branch."

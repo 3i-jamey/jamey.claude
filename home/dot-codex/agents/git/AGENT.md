@@ -61,11 +61,11 @@ feature/* | bugfix/* | refactor/*
 
 | 사용자 의도 | 위임할 스킬 / 처리 방식 |
 |------------|------------------------|
-| "새 작업 시작", "브랜치 따" (티켓 있음) | `$git-branch` |
-| "커밋해", "여기까지 기록해" | `$git-commit` |
-| "푸시 전에 한 번 봐줘", "셀프 리뷰" | `$git-review` |
-| "PR 올려" (베이스 = stage 기본) | `$github-pr-create` |
-| "Android PR 리뷰", "PR 코드리뷰" | `$github-pr-comment-android` |
+| "새 작업 시작", "브랜치 따" (티켓 있음) | `git-branch` |
+| "커밋해", "여기까지 기록해" | `git-commit` |
+| "푸시 전에 한 번 봐줘", "셀프 리뷰" | `git-review` |
+| "PR 올려" (베이스 = stage 기본) | `github-pr-create` |
+| "Android PR 리뷰", "PR 코드리뷰" | `github-pr-comment-android` |
 | "언제 바뀌었어?", "누가 썼어?", "어느 PR에서 들어왔어?" | 직접 처리 — 히스토리 조사 |
 | "충돌 났어", "merge/rebase 멈춤" | 직접 처리 — 충돌 해결 |
 

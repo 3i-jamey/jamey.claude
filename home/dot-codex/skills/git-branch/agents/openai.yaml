@@ -1,4 +1,0 @@
-interface:
-  display_name: "Git Branch"
-  short_description: "Create convention-based git branches"
-  default_prompt: "Use $git-branch to create a branch for this ticket."

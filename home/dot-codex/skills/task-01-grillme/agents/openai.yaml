@@ -1,4 +1,0 @@
-interface:
-  display_name: "Grill Me"
-  short_description: "Stress-test plans with questions"
-  default_prompt: "Use $task-01-grillme to stress-test this plan one question at a time."

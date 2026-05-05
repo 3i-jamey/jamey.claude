@@ -1,4 +1,0 @@
-interface:
-  display_name: "Short Kebab Slug"
-  short_description: "Create short kebab-case slugs"
-  default_prompt: "Use $string-short-kebabcase to make a short branch slug."

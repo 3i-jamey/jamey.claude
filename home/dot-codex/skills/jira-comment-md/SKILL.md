@@ -1,9 +1,9 @@
 ---
-name: jira-comment-md
-description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈에 양국어 제목 + 요약 + 접힘 본문으로 댓글을 등록한다. 분량이 긴 분석 리포트를 영문/한글로 함께 첨부하되 본문은 접어 두어야 할 때 사용.
+name: 'jira-comment-md'
+description: '두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈에 양국어 제목 + 요약 + 접힘 본문으로 댓글을 등록한다. 분량이 긴 분석 리포트를 영문/한글로 함께 첨부하되 본문은 접어 두어야 할 때 사용.'
 ---
 
-# Jira Comment (MD): $ARGUMENTS
+# Jira Comment (MD): 사용자 요청
 
 두 개의 마크다운 파일을 단일 Jira 댓글로 묶어 등록한다.
 원문이 길 수 있으므로 본문은 모두 ADF `expand`(접기) 안에 두고, 댓글 상단에는 국기 이모지 제목과 한 줄 요약만 노출한다.
@@ -24,20 +24,19 @@ description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈
 
 ## 워크플로우
 
-1. **인자 파싱**: `$ARGUMENTS`에서 다음을 추출한다.
+1. **인자 파싱**: `사용자 요청`에서 다음을 추출한다.
    - 이슈 키(`PVPLUS-1234`). URL(`https://...atlassian.net/browse/PVPLUS-1234`)이면 마지막 경로 세그먼트가 키.
    - 마크다운 파일 경로 두 개. 절대 경로 또는 현재 작업 디렉토리 기준 상대 경로.
    - 파싱 실패하거나 파일이 존재하지 않으면 작업을 중단하고 사용자에게 안내한다.
-2. **파일 읽기**: 두 파일을 모두 읽는다. 빈 파일이면 중단.
+2. **파일 읽기**: `파일 읽기` 도구로 두 파일을 모두 읽는다. 빈 파일이면 중단.
 3. **언어 자동 판별**: 각 파일별로 한글 음절(U+AC00–U+D7AF) 비율과 ASCII 알파벳 비율을 비교한다.
    - 한글 비율이 더 높으면 **한글**, 그렇지 않으면 **영어**로 분류한다.
    - 두 파일이 같은 언어로 분류되거나 비율이 모호하면 임의 결정하지 말고 어느 쪽이 어떤 언어인지 묻는다.
-4. **Jira 리소스 확인**: URL 입력이면 hostname(예: `3iai.atlassian.net`)을 `cloudId`로 우선 사용한다. 키만 입력됐거나 hostname 조회가 실패하면 `mcp__jira__getAccessibleAtlassianResources`로 접근 가능한 Jira 리소스를 확인한다. 후보가 여러 개라 어느 Jira인지 확정할 수 없으면 묻는다.
-5. **이슈 확인**: 결정한 `cloudId`와 이슈 키로 `mcp__jira__getJiraIssue`를 호출해 이슈가 존재하고 접근 가능한지 확인한다.
-6. **제목·요약 생성**: 각 파일에서 두 가지를 뽑는다.
+4. **이슈 확인**: `Jira/Atlassian issue 조회 도구`로 이슈를 조회해 `cloudId`를 확보한다.
+5. **제목·요약 생성**: 각 파일에서 두 가지를 뽑는다.
    - **제목**: 첫 H1/H2를 그대로 사용. 없으면 본문 첫 문장에서 60자 이내로 압축. 영어 블록은 `🇺🇸 ` 접두, 한글 블록은 `🇰🇷 ` 접두를 붙인다.
    - **한 줄 요약**: 본문 도입부에서 핵심을 80자 이내 한 줄로 추출. 헤딩이 명확하지 않으면 본문 첫 1~3 문장을 압축.
-7. **마크다운 → ADF 변환**: 각 파일 본문을 ADF 노드 트리로 변환한다.
+6. **마크다운 → ADF 변환**: 각 파일 본문을 ADF 노드 트리로 변환한다.
    - `#`/`##`/`###` → `heading` (level 1/2/3)
    - `-`/`*` 리스트 → `bulletList` + `listItem`
    - `1.` 리스트 → `orderedList`
@@ -46,7 +45,7 @@ description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈
    - `**bold**` → text + `strong` mark, `*italic*` → text + `em` mark
    - 링크 `[text](url)` → text + `link` mark
    - 그 외 단락 → `paragraph`. 변환이 애매하면 `paragraph` 폴백.
-8. **ADF 조립**: 단일 댓글 문서를 다음 골격으로 만든다.
+7. **ADF 조립**: 단일 댓글 문서를 다음 골격으로 만든다.
    ```
    doc
    ├─ heading(level=2):  "🇺🇸 <English title>"
@@ -56,9 +55,9 @@ description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈
    ├─ paragraph:         "<한글 한 줄 요약>"
    └─ expand(title="한글"):    <한글 md → ADF 노드들>
    ```
-9. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 스킬 실행을 마친다.
+8. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 스킬 실행 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 본문(두 마크다운 파일 내용)은 `expand`로 감싼다.
 - `expand.attrs.title`에는 국기 이모지를 넣지 않는다. 이모지는 상단 heading에만.
@@ -66,7 +65,7 @@ description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈
 - 한 줄 요약은 한 줄(80자 내외)을 넘기지 않는다.
 - 언어 판별이 모호하면 사용자에게 묻는다.
 - 파일이 없거나 비어 있으면 댓글을 달지 않는다.
-- `cloudId`는 URL hostname 또는 `mcp__jira__getAccessibleAtlassianResources` 결과로 결정한다. 하드코딩 금지.
+- `cloudId`는 하드코딩 금지. `getJiraIssue` 응답에서 추출한다.
 
 ## 기본 규칙
 
@@ -78,8 +77,8 @@ description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈
 
 ## 마무리 규칙
 
-- 검증: 이슈 ID 추출 실패 / Jira 리소스 모호함 / 이슈 조회 실패 / 파일 없음·빈 파일 / 언어 판별 모호 → `BLOCKED: <INVALID_ISSUE|AMBIGUOUS_CLOUD|ISSUE_LOOKUP_FAILED|MISSING_FILE|EMPTY_FILE|AMBIGUOUS_LANG>`와 한 줄 사유로 종료.
-- 보고: 파일 본문·언어 판별 raw 통계·MCP getJiraIssue 응답은 헤딩 위쪽에 두거나 출력 안 함. 최종 응답에 포함하지 않는다.
+- 검증: 이슈 ID 추출 실패 / 파일 없음·빈 파일 / 언어 판별 모호 → `BLOCKED: <INVALID_ISSUE|MISSING_FILE|EMPTY_FILE|AMBIGUOUS_LANG>`와 한 줄 사유로 종료.
+- 보고: 파일 본문·언어 판별 raw 통계·MCP getJiraIssue 응답은 출력하지 않는다.
 
 ## 리턴 형식
 
@@ -91,7 +90,7 @@ description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈
 진행하려면 (ㅇ/y), 중단하려면 (ㄴ/n)을 적어주세요.
 ```
 
-진행 응답을 받으면 Codex 세션이 ADF 골격(영어 heading + 요약 + expand → 한글 heading + 요약 + expand)을 조립해 `mcp__jira__addCommentToJiraIssue`(contentFormat: "adf", 결정한 cloudId, issueIdOrKey는 이슈 키) 호출. 등록된 댓글 URL 보고.
+진행 응답을 받으면 현재 Codex 세션이 ADF 골격(영어 heading + 요약 + expand → 한글 heading + 요약 + expand)을 조립해 `Jira/Atlassian 댓글 등록 도구`(contentFormat: "adf", cloudId는 getJiraIssue 응답에서) 호출. 등록된 댓글 URL 보고.
 
 ## 출력 포맷 (ADF 골격)
 
