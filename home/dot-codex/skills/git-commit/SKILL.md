@@ -60,7 +60,7 @@ description: '스테이징된 변경만으로 Conventional Commits 형식의 커
 ## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 이 스킬은 **스테이징을 하지 않는다**. `git add` / `git rm` / `git restore --staged` 어느 것도 호출하지 않는다.
-- `Co-Authored-By` 푸터는 자동 추가하지 않는다.
+- `Co-Authored-By` 푸터는 자동 추가하지 않는다. 에이전트의 흔적 남기지 않는다.
 - 스테이징된 변경이 0개면 커밋하지 않는다.
 - 사용자 확인 없이 커밋하지 않는다.
 - 스테이징된 파일에 비밀값/키/인증 파일이 섞여 있으면 거부한다.
