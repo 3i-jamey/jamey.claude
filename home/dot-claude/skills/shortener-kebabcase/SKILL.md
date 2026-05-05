@@ -1,9 +1,9 @@
 ---
-name: string-short-kebabcase
-description: 자유 문구(티켓 제목·이슈 요약 등)를 3~4단어 이내의 짧은 kebab-case 슬러그로 변환할 때 호출. git 브랜치명·폴더명·파일명 등 짧은 식별자를 만들어야 하는 상황에서 사용.
-argument-hint: <원본 문자열>
-model: haiku
-context: fork
+name: 'shortener-kebabcase'
+description: '자유 문구(티켓 제목·이슈 요약 등)를 3~4단어 이내의 짧은 kebab-case 슬러그로 변환할 때 호출. git 브랜치명·폴더명·파일명 등 짧은 식별자를 만들어야 하는 상황에서 사용.'
+argument-hint: '<원본 문자열>'
+model: 'haiku'
+context: 'fork'
 ---
 
 # 짧은 kebab-case 슬러그 만들기: $ARGUMENTS
@@ -21,7 +21,7 @@ context: fork
 4. **3~4단어**로 줄인다. 핵심 주체(무엇을) + 핵심 행위/현상(어떻게) 위주로 남긴다.
 5. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료. 사용자 응답은 받지 않는다.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 출력은 **3~4단어 이내**로 제한한다.
 - 출력은 `[a-z0-9-]+` 만 포함한다.

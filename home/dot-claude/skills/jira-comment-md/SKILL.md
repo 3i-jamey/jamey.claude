@@ -1,10 +1,10 @@
 ---
-name: jira-comment-md
-description: 두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈에 양국어 제목 + 요약 + 접힘 본문으로 댓글을 등록한다. 분량이 긴 분석 리포트를 영문/한글로 함께 첨부하되 본문은 접어 두어야 할 때 사용.
-argument-hint: <TICKET-or-URL> <md-file-1> <md-file-2>
-model: sonnet
-context: fork
-tools: Read, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__addCommentToJiraIssue
+name: 'jira-comment-md'
+description: '두 개의 마크다운 파일(영어/한글)을 받아 Jira 이슈에 양국어 제목 + 요약 + 접힘 본문으로 댓글을 등록한다. 분량이 긴 분석 리포트를 영문/한글로 함께 첨부하되 본문은 접어 두어야 할 때 사용.'
+argument-hint: '<TICKET-or-URL> <md-file-1> <md-file-2>'
+model: 'sonnet'
+context: 'fork'
+tools: 'Read, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__addCommentToJiraIssue'
 ---
 
 # Jira Comment (MD): $ARGUMENTS
@@ -61,7 +61,7 @@ tools: Read, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__a
    ```
 8. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 본문(두 마크다운 파일 내용)은 `expand`로 감싼다.
 - `expand.attrs.title`에는 국기 이모지를 넣지 않는다. 이모지는 상단 heading에만.

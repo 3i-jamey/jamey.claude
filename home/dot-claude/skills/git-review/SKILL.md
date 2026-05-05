@@ -1,10 +1,10 @@
 ---
-name: git-review
-description: 워킹 트리 diff를 커밋·푸시·PR 전에 자기 점검합니다. 잔여 디버그·비밀값·범위 이탈·누락 테스트 + 프로젝트 CLAUDE.md/CONTRIBUTING.md의 아키텍처·코딩 규칙 위반을 잡습니다.
-argument-hint: "[선택: 리뷰 범위를 좁힐 파일/경로]"
-model: sonnet
-context: fork
-tools: Bash, Read, Grep
+name: 'git-review'
+description: '워킹 트리 diff를 커밋·푸시·PR 전에 자기 점검합니다. 잔여 디버그·비밀값·범위 이탈·누락 테스트 + 프로젝트 CLAUDE.md/CONTRIBUTING.md의 아키텍처·코딩 규칙 위반을 잡습니다.'
+argument-hint: '[선택: 리뷰 범위를 좁힐 파일/경로]'
+model: 'sonnet'
+context: 'fork'
+tools: 'Bash, Read, Grep'
 ---
 
 # 리뷰: $ARGUMENTS
@@ -25,7 +25,7 @@ tools: Bash, Read, Grep
 7. 아래 체크리스트(이 파일 하단)를 수행한다.
 8. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료. 사용자 응답은 받지 않는다 (보고 전용 스킬).
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 발견만 하고 자동으로 고치지 않는다.
 - 코드 수정·커밋·푸시 같은 변경 행위를 하지 않는다. 허용되는 git 명령은 읽기 계열(`git status`, `git diff`, `git log`, `git show`, `git blame`, `git fetch`)뿐.

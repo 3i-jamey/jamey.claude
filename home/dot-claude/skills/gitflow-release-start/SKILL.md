@@ -1,10 +1,10 @@
 ---
-name: gitflow-release-start
-description: git flow release 브랜치를 새로 만듭니다. stage에서 release/{VERSION}을 분기하고, 버전 파일을 갱신한 뒤 버전 bump 커밋을 만들고 리모트에 푸시합니다. 사용자가 새 릴리즈를 시작하거나 코드프리즈에 들어갈 때 사용.
-argument-hint: "[선택: 1.19.0 — 생략 시 다음 마이너 제안]"
-model: haiku
-context: fork
-tools: Bash, Read, Edit
+name: 'gitflow-release-start'
+description: 'git flow release 브랜치를 새로 만듭니다. stage에서 release/{VERSION}을 분기하고, 버전 파일을 갱신한 뒤 버전 bump 커밋을 만들고 리모트에 푸시합니다. 사용자가 새 릴리즈를 시작하거나 코드프리즈에 들어갈 때 사용.'
+argument-hint: '[선택: 1.19.0 — 생략 시 다음 마이너 제안]'
+model: 'haiku'
+context: 'fork'
+tools: 'Bash, Read, Edit'
 ---
 
 # 릴리즈 시작: $ARGUMENTS
@@ -25,7 +25,7 @@ tools: Bash, Read, Edit
    - `release/{VERSION}` 브랜치가 로컬/리모트 어디에든 있으면 멈춤.
 5. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 버전 파일 외 다른 파일을 수정하지 않는다.
 - 같은 이름의 release 브랜치가 있으면 덮어쓰지 않는다.

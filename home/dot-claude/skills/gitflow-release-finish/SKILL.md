@@ -1,10 +1,10 @@
 ---
-name: gitflow-release-finish
-description: git flow 릴리즈 브랜치를 마무리합니다. release/{VERSION}을 master와 stage에 머지하고 버전 태그를 만든 뒤 리모트로 푸시합니다. 사용자가 릴리즈를 닫거나 배포 직전 마무리를 요청할 때 사용.
-argument-hint: "[선택: 1.19.0 — 생략 시 현재 release 브랜치 자동 감지]"
-model: haiku
-context: fork
-tools: Bash, Read
+name: 'gitflow-release-finish'
+description: 'git flow 릴리즈 브랜치를 마무리합니다. release/{VERSION}을 master와 stage에 머지하고 버전 태그를 만든 뒤 리모트로 푸시합니다. 사용자가 릴리즈를 닫거나 배포 직전 마무리를 요청할 때 사용.'
+argument-hint: '[선택: 1.19.0 — 생략 시 현재 release 브랜치 자동 감지]'
+model: 'haiku'
+context: 'fork'
+tools: 'Bash, Read'
 ---
 
 # 릴리즈 마무리: $ARGUMENTS
@@ -24,18 +24,18 @@ tools: Bash, Read
    - 태그 `v{VERSION}`이 있으면 멈춤.
 4. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 머지 충돌이 발생하면 중단하고 충돌 파일을 보고한다.
 - 태그가 있으면 덮어쓰지 않는다.
 - force push / 훅 우회를 쓰지 않는다. 사용자가 명시 요청한 경우만 예외.
 - 워킹 트리가 더러운 상태로 진행하지 않는다.
 - 리모트 `release/*` 브랜치를 자동 삭제하지 않는다.
+- master/stage 동기화는 fast-forward만. fast-forward 불가면 사용자에게 보고.
 
 ## 기본 규칙
 
 - 입력의 `v` 접두사는 제거해서 보관한다.
-- master/stage 동기화는 fast-forward만. fast-forward 불가면 사용자에게 보고.
 - 푸시는 master → stage → tags 순.
 - 릴리즈 노트/changelog를 자동 편집하지 않는다.
 

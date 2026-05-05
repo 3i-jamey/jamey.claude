@@ -1,10 +1,10 @@
 ---
-name: git-commit
-description: 스테이징된 변경만으로 Conventional Commits 형식의 커밋을 만든다. 사용자가 커밋을 요청하거나 한 논리적 작업 단위가 끝났을 때 사용. 스테이징은 사용자가 끝낸 상태여야 한다.
-argument-hint: "[선택: 범위 힌트 또는 메시지 지정]"
-model: sonnet
-context: fork
-tools: Bash, Read, mcp__claude_ai_Atlassian__getJiraIssue
+name: 'git-commit'
+description: '스테이징된 변경만으로 Conventional Commits 형식의 커밋을 만든다. 사용자가 커밋을 요청하거나 한 논리적 작업 단위가 끝났을 때 사용. 스테이징은 사용자가 끝낸 상태여야 한다.'
+argument-hint: '[선택: 범위 힌트 또는 메시지 지정]'
+model: 'sonnet'
+context: 'fork'
+tools: 'Bash, Read, mcp__claude_ai_Atlassian__getJiraIssue'
 ---
 
 # 커밋: $ARGUMENTS
@@ -61,7 +61,7 @@ tools: Bash, Read, mcp__claude_ai_Atlassian__getJiraIssue
    이 형식은 **버전 bump 외 다른 변경에는 쓰지 않는다**.
 9. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 이 스킬은 **스테이징을 하지 않는다**. `git add` / `git rm` / `git restore --staged` 어느 것도 호출하지 않는다.
 - `Co-Authored-By` 푸터는 자동 추가하지 않는다.
@@ -71,19 +71,19 @@ tools: Bash, Read, mcp__claude_ai_Atlassian__getJiraIssue
 - pre-commit 훅을 우회하지 않는다 (`--no-verify`, `--no-gpg-sign`). 사용자 명시 요청 시에만 예외.
 - `--amend`로 실패한 훅을 덮지 않는다.
 - 이 스킬로 push 하지 않는다.
+- Conventional Commits 형식을 지킨다 (이모지 prefix는 버전 업데이트 외 금지).
+- `CLAUDE.md` / `CONTRIBUTING.md` 위반은 고치지 않고 사용자에게 보고한다.
 - 영어로 작성한다.
 
 ## 기본 규칙
 
 - 한 커밋에 하나의 논리적 변경만 담는다. 분할은 사용자가 unstage 로 직접 한다.
-- Conventional Commits 형식을 지킨다 (이모지 prefix는 버전 업데이트 외 금지).
 - 스코프(`(scope)`)를 쓰지 않는다.
 - 제목 첫 글자는 대문자로 쓴다. `chore: add ...`(소문자) 금지.
 - 본문에 `-` 불릿 최소 한 줄을 둔다.
 - `$ARGUMENTS`가 주어져도 분석을 건너뛰지 않는다.
 - 브랜치 이름에서 티켓(`[A-Z]+-\d+`)이 추출되면 본문 마지막 줄에 JIRA 링크(`https://3iai.atlassian.net/browse/{TICKET}`)를 붙인다. 티켓 없는 브랜치(`main`, `chore/...`)에서는 붙이지 않는다.
 - 이슈 트래커 MCP 응답은 타입 결정에 참고만 한다.
-- `CLAUDE.md` / `CONTRIBUTING.md` 위반은 고치지 않고 사용자에게 보고한다.
 
 ## 마무리 규칙
 

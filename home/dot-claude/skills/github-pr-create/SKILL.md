@@ -1,10 +1,10 @@
 ---
-name: github-pr-create
-description: 작업 브랜치(feature/bugfix/refactor/hotfix)에 대해 통합 브랜치(stage)를 베이스로 하는 GitHub PR을 생성합니다. 브랜치 이름의 티켓 번호를 PR 제목·본문에 연결하고, push와 `gh pr create`까지 한 번에 처리합니다.
-argument-hint: "[선택: base 브랜치 또는 PR 제목 힌트]"
-model: sonnet
-context: fork
-tools: Bash, Read
+name: 'github-pr-create'
+description: '작업 브랜치(feature/bugfix/refactor/hotfix)에 대해 통합 브랜치(stage)를 베이스로 하는 GitHub PR을 생성합니다. 브랜치 이름의 티켓 번호를 PR 제목·본문에 연결하고, push와 `gh pr create`까지 한 번에 처리합니다.'
+argument-hint: '[선택: base 브랜치 또는 PR 제목 힌트]'
+model: 'sonnet'
+context: 'fork'
+tools: 'Bash, Read'
 ---
 
 # PR: $ARGUMENTS
@@ -50,7 +50,7 @@ tools: Bash, Read
    - hotfix 브랜치라도 별도 지시 없으면 stage가 안전한 기본값
 7. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 베이스 기본값은 `stage`다. 사용자가 명시적으로 다른 베이스를 지정하지 않는 한 master/main에 PR을 만들지 않는다.
 - 사용자가 명시적으로 요청하지 않는 한 force-push 하지 않는다. 베이스 브랜치(stage/master/release/*)에는 어떤 경우에도 force-push 금지.

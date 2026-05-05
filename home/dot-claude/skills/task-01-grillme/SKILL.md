@@ -1,10 +1,10 @@
 ---
-name: task-01-grillme
-description: 사용자가 가져온 계획·설계를 한 번에 한 질문씩 의사결정 트리의 모든 갈래를 해결할 때까지 인터뷰한다. 사용자가 plan/design을 stress-test 하고 싶어 하거나 "grill me"라고 말할 때 사용.
+name: 'task-01-grillme'
+description: '사용자가 가져온 계획·설계를 한 번에 한 질문씩 의사결정 트리의 모든 갈래를 해결할 때까지 인터뷰한다. 사용자가 plan/design을 stress-test 하고 싶어 하거나 "grill me"라고 말할 때 사용.'
 argument-hint: '[grill 대상 — 예: "이 마이그레이션 계획", "auth 리팩터 설계"]'
-model: opus
-context: inherit
-tools: Bash, Read, Grep, Glob
+model: 'opus'
+context: 'inherit'
+tools: 'Bash, Read, Grep, Glob'
 ---
 
 # 계획·설계 그릴: $ARGUMENTS
@@ -19,7 +19,7 @@ tools: Bash, Read, Grep, Glob
 4. 사용자 답을 받아 결정 트리에 반영하고, 다음 갈래로 이동한다 (3번 반복).
 5. 모든 갈래가 해결되면 합의된 결정 요약을 출력하고 종료한다.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 질문은 한 번에 하나씩 던진다.
 - 각 질문엔 추천 답변과 짧은 근거를 함께 제시한다.

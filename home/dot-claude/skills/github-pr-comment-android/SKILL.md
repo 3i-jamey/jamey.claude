@@ -1,10 +1,10 @@
 ---
-name: github-pr-comment-android
-description: GitHub PR(또는 브랜치/파일)을 Android 시니어 개발자 관점에서 코드리뷰하고, 라인 코멘트와 종합 review를 PR에 제출합니다. 안정성·설계·사이드이펙트·Android 특화·성능 5축 점검. PR이 없으면 터미널 출력으로 폴백.
-argument-hint: "[브랜치명 | PR번호 | 파일 경로]"
-model: sonnet
-context: fork
-tools: Bash, Read, Grep
+name: 'github-pr-comment-android'
+description: 'GitHub PR(또는 브랜치/파일)을 Android 시니어 개발자 관점에서 코드리뷰하고, 라인 코멘트와 종합 review를 PR에 제출합니다. 안정성·설계·사이드이펙트·Android 특화·성능 5축 점검. PR이 없으면 터미널 출력으로 폴백.'
+argument-hint: '[브랜치명 | PR번호 | 파일 경로]'
+model: 'sonnet'
+context: 'fork'
+tools: 'Bash, Read, Grep'
 ---
 
 # Android 코드리뷰: $ARGUMENTS
@@ -35,7 +35,7 @@ tools: Bash, Read, Grep
 4. **PR 찾기**: `gh pr list --head <current-branch> --json number --jq '.[0].number'`. 없으면 터미널 출력 모드로 분류만 보고하고 종료.
 5. 마무리 규칙을 참고하여 리턴 형식대로 출력 후 fork 종료.
 
-## 반드시 지킬 규칙
+## 강제 규칙(!) : !는 IMPORTANT와 동일
 
 - 코드를 수정·생성·삭제하지 않는다.
 - 저장소 상태를 변경하는 git 명령을 실행하지 않는다 (commit/push/merge/rebase/reset 등 금지).
